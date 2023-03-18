@@ -18,6 +18,7 @@ EXPOSE 80
 EXPOSE 8080
 EXPOSE 443
 
+ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
 
 ENTRYPOINT ["dotnet", "campus-crawl-web-api.dll"]
