@@ -13,5 +13,7 @@ RUN dotnet publish "campus-crawl-web-api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "campus-crawl-web-api.dll"]
 
+EXPOSE 5000
+
+ENTRYPOINT ["dotnet", "campus-crawl-web-api.dll"]

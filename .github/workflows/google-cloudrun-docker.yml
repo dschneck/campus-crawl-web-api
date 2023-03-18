@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: campus-crawler-web-api # TODO: update Google Cloud project id
   GAR_LOCATION: us-central1 # TODO: update Artifact Registry location
-  SERVICE: campus-crawler-web-api-server # TODO: update Cloud Run service name
+  SERVICE: campus-crawl-web-api-server # TODO: update Cloud Run service name
   REGION: us-central1 # TODO: update Cloud Run service region
 
 jobs:
