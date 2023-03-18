@@ -22,7 +22,7 @@ WORKDIR /app
 COPY --from=build /app/out .
 
 # Expose port 80 for the app to listen on
-EXPOSE 80
+EXPOSE 8080
 
 # Set the command to start the app
 CMD ["dotnet", "campus-crawler-web-api.dll"]
