@@ -15,6 +15,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 EXPOSE 80
+EXPOSE 8080
 EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://*:${PORT}
