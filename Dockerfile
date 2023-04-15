@@ -20,4 +20,4 @@ EXPOSE 443
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
 
-ENTRYPOINT ["dotnet", "api.dll"]
+ENTRYPOINT ["dotnet", "Api.dll"]
