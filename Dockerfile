@@ -4,7 +4,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 COPY . /src
 WORKDIR /src
-RUN ls
+RUN rm -r dbscripts
 RUN dotnet build "campus-crawl-web-api.csproj" -c Release -o /app/build
 
 FROM build AS publish

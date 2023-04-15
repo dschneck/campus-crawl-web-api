@@ -1,0 +1,4 @@
+CREATE TABLE Location (
+    Id STRING(36) NOT NULL,
+    PRIMARY KEY(Id)
+);
