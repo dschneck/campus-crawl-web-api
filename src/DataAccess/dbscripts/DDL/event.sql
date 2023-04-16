@@ -1,0 +1,11 @@
+CREATE TABLE Event (
+    Id VARCHAR(36) NOT NULL,
+    AID VARCHAR(36) NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Description TEXT NOT NULL,
+    Category VARCHAR(20) NOT NULL,
+    Time DATETIME NOT NULL,
+    LocationId NOT NULL,
+    FOREIGN KEY(LocationId) REFERENCES Location(Id),
+    FOREIGN KEY(AID) REFERENCES Admin(Id)
+);

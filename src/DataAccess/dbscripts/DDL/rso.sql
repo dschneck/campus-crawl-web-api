@@ -1,0 +1,3 @@
+CREATE TABLE RSO (
+    Id VARCHAR(36) NOT NULL,
+);

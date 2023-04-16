@@ -1,0 +1,6 @@
+CREATE TABLE PrivateEvent (
+    Id VARCHAR(36) NOT NULL,
+    EventId VARCHAR(36) NOT NULL,
+    AdminId VARCHAR(36) NOT NULL,
+    FOREIGN KEY(Id) REFERENCES Event(Id)
+);
