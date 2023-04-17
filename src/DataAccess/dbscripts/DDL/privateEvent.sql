@@ -2,5 +2,6 @@ CREATE TABLE PrivateEvent (
     Id STRING(36) NOT NULL,
     EventId STRING(36) NOT NULL,
     AdminId STRING(36) NOT NULL,
-    FOREIGN KEY(Id) REFERENCES Event(Id)
-);
+    FOREIGN KEY(AdminId) REFERENCES Admin(Id)
+    FOREIGN KEY(EventId) REFERENCES Event(Id)
+) PRIMARY KEY(Id);

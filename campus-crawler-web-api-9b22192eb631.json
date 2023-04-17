@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "campus-crawler-web-api",
+  "private_key_id": "9b22192eb63168a6cfc31378982c392d4d25f427",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAwA6vcsrxKGao\nNblAqvIYR6Ysr1DL90/JfU4SIiJyF3Gk1PGsPMb0YuzOWe+sj4bJRooM3Fh28zLk\nPSnaHqCyi0cx+YZQUyt3j1DKErkkd2WchMUKh9BTbG675MAzdbCIpqvfm4VFUrm+\nkYISQmXHW7uyYGfsoszmCLe89Ngw8OVwqQssGUOiK25/L/xPbtdza9n2PyCTQCCN\nYq5sXl2EGs4N+kfUSehumLfJa9S+PPTWkGU3dhY7ExygS7N+iLjbS1XT2muhLvJ8\np7iWtSpzkruM3bT96nfR2HL/KfHqREtHNk7udglY+AhJC2yr4GUGslX7jRBc6sUg\nGQGRHMZZAgMBAAECggEADnMvfqdxT6Y22PgrFs4h92BCtNGhUeMs3fb4//rDYJCB\nnmjw47fMNgTHCjq7kTES2prBTXDE6Ij3qRztOusGItB2ckiJsVKk3PIXbUi9TL6v\nNU5OS8lt/J0RyZ/+6TSy2vG8y5cIBRAMOP1FVitYYDtQLVGVJOw5BmtDpASqgvOg\n/Eum3eK1FDSNIOyWp6TnAqPjpKkXPLjVFBNh2G6VZU/W5ZIPfg1b0xsyTnhZ9nXU\nqo0uP+14BoE4cVe62mL167ueHwRNUEFFKAZTUo7+pmVgc4SZZe8yxt+dYnYlV00M\no7IVViffdRfjyEfgXsU+oAPg+iE+1uAVGK0L7nNRkQKBgQDkLj0I3pRgMuhab0CS\nZT19yBSDux/SJDd/WtLdjcO/Tqlg7HZHU+cvXgmMI0MQrGndV41TrvW1K+vfmLyz\n0o09ecy/Gx9/IoHxWgIKfn9MYD6He3chem7sc7BMvMgAMyMuzs9tuDnMhYGdY7Aa\nVQ4xXmKv7qj5cVhwRi23umlukQKBgQDYP/+VFoz1x748662Zv5f7s548yAq/6Msx\n4sIMruESyW+eJ1jeVYYThyMJdZNo0s6zqyCLXo7ul3exF0JkyFtdpQi1QueMPy5c\nTDwVYutg6UJM1iXVTSUNNDsQMfsZO8aTJaChW3rNvuiROTmaA/EMDOZ3yXEqk8CM\n490fitXPSQKBgQDXHDwP2313fyaK8uyl1ml05aVpVoQ2IExtdFrr4NSTyn1lUSZk\nMdX1UqqfgTKdSlz2/K3QIVWjuUdBYIUs5SafuO5rjw9PVGG5/QeFiyFJCEaKhLuX\nRQvDP4EJpsLJZWwamX71ScK7a3T4wlznRh3+LqPMhaqoldEw7wf0d/ki8QKBgH1n\nV5qokiPxqlN/xJN1dPiE6A2NYBZ8NGGAg1GBlIolgHHxlWqRpAftBRd2NH7ESRQN\n9/h6ZF7ePY3X1CvHuJwsmUksPESrWwIxP2KTk7YGbulKAnSYoRTwJhQ1N80hSf2J\nA4avGx73R7z3t3ymLoHzdS8gBV1Qg4fwmAmzpFvpAoGBAJQe2GsmZfsfMmPqHJJz\nW4KjvgGuCx5l37bV/8OGf4e043DcZXR3OWIHgUNdioiSg2xOJWUkXLb6Uo+a0Obr\nZq/oQRDaMPFra2kinkNSyaQnEEC38Fk4U/gPfpXcVQzBVEZIlBzj/0ulH6hfjgto\nGiuhkTDl/r0sCNZvGhV0yxzf\n-----END PRIVATE KEY-----\n",
+  "client_email": "cc-spanner-account@campus-crawler-web-api.iam.gserviceaccount.com",
+  "client_id": "114354448200128996513",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cc-spanner-account%40campus-crawler-web-api.iam.gserviceaccount.com"
+}

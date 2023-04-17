@@ -19,5 +19,6 @@ EXPOSE 443
 
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
+ENV GOOGLE_APPLICATION_CREDENTIALS='./campus-crawler-web-api-9b22192eb631.json'
 
 ENTRYPOINT ["dotnet", "Api.dll"]
