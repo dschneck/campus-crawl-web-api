@@ -1,5 +1,5 @@
 CREATE TABLE RsoEvent (
-    Id VARCHAR(36) NOT NULL,
-    EventId VARCHAR(36) NOT NULL,
+    Id STRING(36) NOT NULL,
+    EventId STRING(36) NOT NULL,
     FOREIGN KEY(EventId) REFERENCES Event(attribute)
 );

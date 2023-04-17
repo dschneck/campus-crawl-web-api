@@ -1,7 +1,8 @@
 CREATE TABLE University (
-    UniversityId VARCHAR(36) NOT NULL,
-    Address TEXT NOT NULL,
-    Description TEXT NOT NULL,
-    NumberOfStudents INT,
+    UniversityId STRING(36) NOT NULL,
+    Name STRING(100) NOT NULL,
+    Address STRING(MAX) NOT NULL,
+    Description STRING(MAX) NOT NULL,
+    NumberOfStudents INT64,
     PRIMARY KEY(UniversityId)
 );

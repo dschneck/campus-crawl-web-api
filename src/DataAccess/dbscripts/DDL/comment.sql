@@ -1,5 +1,5 @@
 CREATE TABLE Comment (
-    Id VARCHAR(36) NOT NULL,
-    Text TEXT NOT NULL,
+    Id STRING(36) NOT NULL,
+    Text STRING(MAX) NOT NULL,
     PRIMARY KEY(Id)
 );
