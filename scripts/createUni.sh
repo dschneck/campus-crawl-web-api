@@ -1,6 +1,7 @@
 #!/bin/env bash
 curl -X 'POST' \
-  'https://localhost:7079/universities' \
+  'https://campus-crawl-web-api-server-32wswsezka-uc.a.run.app/universities' \
+  -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
   -H 'accept: text/plain' \
   -H 'Content-Type: application/json' \
   -d '{

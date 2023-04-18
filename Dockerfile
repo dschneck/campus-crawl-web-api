@@ -12,6 +12,7 @@ RUN dotnet publish "campus-crawl-web-api.sln" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY ./campus-crawler-web-api-9b22192eb631.json .
 
 EXPOSE 8080
 EXPOSE 443
