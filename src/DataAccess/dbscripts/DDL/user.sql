@@ -5,5 +5,5 @@ CREATE TABLE User (
     FirstName STRING(20) NOT NULL,
     LastName STRING(40) NOT NULL,
     UniversityId STRING(36) NOT NULL,
-    FOREIGN KEY(UniversityId) REFERENCES University(UniversityId),
+    FOREIGN KEY(UniversityId) REFERENCES University(Id),
 ) PRIMARY KEY(Id);
