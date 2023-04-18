@@ -1,15 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using DataAccess.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace DataAccess
 {
     public class CampusCrawlDbContext : DbContext {
-        public CampusCrawlDbContext(DbContextOptions options)
+        private readonly ILoggerFactory logger;
+
+        public CampusCrawlDbContext(DbContextOptions options, ILoggerFactory logger): base(options)
         {
+            this.logger = logger;
         }
 
         public DbSet<University> University { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLoggerFactory(this.logger);
+            optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableDetailedErrors();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

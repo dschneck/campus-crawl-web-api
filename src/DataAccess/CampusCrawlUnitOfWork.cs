@@ -1,4 +1,5 @@
 using DataAccess.Intefaces;
+using DataAccess.Repositories;
 
 namespace DataAccess
 {
@@ -6,6 +7,15 @@ namespace DataAccess
     {
         private readonly CampusCrawlDbContext dbContext;
         private bool disposed = false;
+        private UniversityRepository uniRepo;
+
+        public UniversityRepository university
+        {
+            get
+            {
+                return this.uniRepo ??= new UniversityRepository(this.dbContext);
+            }
+        }
 
         public CampusCrawlUnitOfWork(CampusCrawlDbContext dbContext)
         {
