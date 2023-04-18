@@ -20,7 +20,7 @@ namespace campus_crawl_web_api.Controllers
         [HttpPost]
         public async Task<string> CreateUniversityProfile([FromBody] University uni)
         {
-            var ret = await this.unitOfWork.university.CreateUniversity(uni);
+            var ret = await this.unitOfWork.Universities.CreateUniversity(uni);
             await this.unitOfWork.SaveAllAsync();
             this.logger.LogInformation($"just created a new university with this id {ret}.");
             return ret;

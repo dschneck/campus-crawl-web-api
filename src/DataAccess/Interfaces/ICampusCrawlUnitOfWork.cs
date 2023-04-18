@@ -6,6 +6,7 @@ namespace DataAccess.Intefaces
     public interface ICampusCrawlUnitOfWork
     {
         Task<int> SaveAllAsync();
-        UniversityRepository university { get; }
+        UniversityRepository Universities { get; }
+        UserRepository Users { get; }
     }
 }

@@ -8,12 +8,21 @@ namespace DataAccess
         private readonly CampusCrawlDbContext dbContext;
         private bool disposed = false;
         private UniversityRepository uniRepo;
+        private UserRepository userRepo;
 
-        public UniversityRepository university
+        public UniversityRepository Universities
         {
             get
             {
                 return this.uniRepo ??= new UniversityRepository(this.dbContext);
+            }
+        }
+
+        public UserRepository Users
+        {
+            get
+            {
+                return this.userRepo ??= new UserRepository(this.dbContext);
             }
         }
 
