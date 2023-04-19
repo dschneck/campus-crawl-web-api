@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using DataAccess;
+using DataAccess.Intefaces;
 using DataAccess.Entities;
 using DataAccess.Models;
 
@@ -10,9 +10,9 @@ namespace campus_crawl_web_api.Controllers {
     public class UserController : ControllerBase
     {
         private ILogger<UserController> logger;
-        private CampusCrawlUnitOfWork unitOfWork;
+        private ICampusCrawlUnitOfWork unitOfWork;
 
-        public UserController(ILogger<UserController> logger, CampusCrawlUnitOfWork unitOfWork) {
+        public UserController(ILogger<UserController> logger, ICampusCrawlUnitOfWork unitOfWork) {
             this.logger = logger;
             this.unitOfWork = unitOfWork;
         }
