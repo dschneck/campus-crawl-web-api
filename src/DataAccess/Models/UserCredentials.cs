@@ -2,8 +2,8 @@ namespace DataAccess.Models
 {
     public class UserCredentials
     {
-        public string email;
+        public string Email { get; set; }
 
-        public string password;
+        public string Password { get; set; }
     }
 }
