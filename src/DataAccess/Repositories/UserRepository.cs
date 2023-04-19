@@ -22,7 +22,7 @@ namespace DataAccess.Repositories
 
         public async Task<User> GetUserFromCredentials(UserCredentials userCred)
         {
-            var user = await this.dbSet.FirstOrDefaultAsync();
+            var user = await this.dbSet.FirstOrDefaultAsync(x => x.Email.Equals(userCred.email));
             return user;
         }
     }
