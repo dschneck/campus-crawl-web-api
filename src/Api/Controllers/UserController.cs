@@ -20,6 +20,7 @@ namespace campus_crawl_web_api.Controllers {
         [HttpPost("login")]
         public async Task<Response<User>> Login([FromBody] UserCredentials userCredentials)
         {
+            this.logger.LogInformation("trying to log someone in");
             var response = new Response<User>() {
                 hasError = false,
                 error = ""
@@ -48,6 +49,7 @@ namespace campus_crawl_web_api.Controllers {
             this.logger.LogInformation("trying to log someone in");
             response.data =  await this.unitOfWork.Users.CreateUser(user);
 
+            await this.unitOfWork.SaveAllAsync();
             return response;
         }
     }
