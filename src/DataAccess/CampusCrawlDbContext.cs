@@ -15,6 +15,8 @@ namespace DataAccess
 
         public DbSet<University> University { get; set; }
 
+        public DbSet<User> User { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
