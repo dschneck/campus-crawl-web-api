@@ -11,3 +11,5 @@ curl -X 'POST' \
   "description": "string",
   "numberOfStudents": 0
 }'
+
+echo ""

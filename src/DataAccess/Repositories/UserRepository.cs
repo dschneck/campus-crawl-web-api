@@ -20,9 +20,10 @@ namespace DataAccess.Repositories
             return user;
         }
 
-        public Task<User> GetUserFromCredentials(UserCredentials userCred)
+        public async Task<User> GetUserFromCredentials(UserCredentials userCred)
         {
-            return this.dbSet.FirstOrDefaultAsync(x => x.Email == userCred.email && x.Password == userCred.password);
+            var user = await this.dbSet.FirstOrDefaultAsync();
+            return user;
         }
     }
 }

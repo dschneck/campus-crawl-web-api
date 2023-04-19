@@ -4,6 +4,8 @@ curl -X 'POST' \
   -H 'accept: text/plain' \
   -H 'Content-Type: application/json' \
   -d '{
-  "email": "david.schneckster@hotmail.com",
-  "password": "password"
+  "email": "david@email.com",
+  "password": "123"
 }'
+
+echo ""
