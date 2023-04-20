@@ -13,21 +13,21 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Deployed App", builder =>
     {
-        builder.WithOrigins("https://campus-crawl-client-32wswsezka-uc.a.run.app")
+        builder.WithOrigins("https://campus-crawl-client-32wswsezka-uc.a.run.app/*")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 
     options.AddPolicy("Local App", builder =>
     {
-        builder.WithOrigins("https://localhost:3000")
+        builder.WithOrigins("https://localhost:3000/*")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 
     options.AddPolicy("Other Local App", builder =>
     {
-        builder.WithOrigins("http://localhost:3000")
+        builder.WithOrigins("http://localhost:3000/*")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });

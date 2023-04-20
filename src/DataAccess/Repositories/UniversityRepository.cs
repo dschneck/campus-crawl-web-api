@@ -17,5 +17,11 @@ namespace DataAccess.Repositories
             await this.dbSet.AddAsync(university);
             return university.Id;
         }
+
+        public async Task<IEnumerable<University>> GetUniversitiesAsync()
+        {
+            var unis = await this.dbSet.ToListAsync();
+            return unis;
+        }
     }
 }

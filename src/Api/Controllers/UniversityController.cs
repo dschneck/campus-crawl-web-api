@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using DataAccess.Entities;
+using DataAccess.Models;
 using DataAccess.Intefaces;
 
 namespace campus_crawl_web_api.Controllers
@@ -15,6 +16,27 @@ namespace campus_crawl_web_api.Controllers
         {
             this.logger = logger;
             this.unitOfWork = unitOfWork;
+        }
+
+        [HttpGet]
+        public async Task<Response<IEnumerable<University>>> GetUniversities()
+        {
+
+            var response = new Response<IEnumerable<University>>()
+            {
+                hasError = false,
+                error = ""
+            };
+
+            response.data = await this.unitOfWork.Universities.GetUniversitiesAsync();
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get universities";
+            }
+
+            return response;
         }
 
         [HttpPost]
