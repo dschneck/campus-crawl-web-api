@@ -31,6 +31,7 @@ namespace campus_crawl_web_api
             };
 
             var data = this.unitOfWork.RSOs.CreateRSO(rso);
+            await this.unitOfWork.SaveAllAsync();
 
             if (response.data == null) {
                 response.hasError = true;
@@ -40,8 +41,17 @@ namespace campus_crawl_web_api
             return response;
         }
 
-        [HttpPost("join")]
-        public string JoinRso() => Guid.NewGuid().ToString();
+        [HttpPost("join/{rsoId}")]
+        public async Task<Response<bool>> JoinRso([FromBody] string userId, [FromRoute] string rsoId)
+        {
+            var response = new Response<bool>() {
+                hasError = false,
+                error = ""
+            };
+
+            response.data = true;
+            return response;
+        }
 
     }
 }
