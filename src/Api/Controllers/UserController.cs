@@ -38,7 +38,7 @@ namespace campus_crawl_web_api.Controllers {
         }
 
         [HttpPost("register")]
-        public async Task<Response<User>> Register([FromBody] User user)
+        public async Task<Response<User>> Register([FromBody] UserModel user)
         {
 
             var response = new Response<User>() {
@@ -47,7 +47,15 @@ namespace campus_crawl_web_api.Controllers {
             };
 
             this.logger.LogInformation("trying to log someone in");
-            response.data =  await this.unitOfWork.Users.CreateUser(user);
+
+            var entity = new User() {
+                Id = user.Id,
+                UniversityId = user.UniversityId,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            response.data =  await this.unitOfWork.Users.CreateUser(entity);
 
             await this.unitOfWork.SaveAllAsync();
             return response;
