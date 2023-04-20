@@ -9,6 +9,8 @@ namespace DataAccess
         private bool disposed = false;
         private UniversityRepository uniRepo;
         private UserRepository userRepo;
+        private AdminRepository adminRepo;
+        private RsoRepository rsoRepo;
 
         public UniversityRepository Universities
         {
@@ -23,6 +25,23 @@ namespace DataAccess
             get
             {
                 return this.userRepo ??= new UserRepository(this.dbContext);
+            }
+        }
+
+
+        public AdminRepository Admins
+        {
+            get
+            {
+                return this.adminRepo ??= new AdminRepository(this.dbContext);
+            }
+        }
+
+        public RsoRepository RSOs
+        {
+            get
+            {
+                return this.rsoRepo ??= new RsoRepository(this.dbContext);
             }
         }
 

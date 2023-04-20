@@ -8,5 +8,7 @@ namespace DataAccess.Intefaces
         Task<int> SaveAllAsync();
         UniversityRepository Universities { get; }
         UserRepository Users { get; }
+        RsoRepository RSOs { get; }
+        AdminRepository Admins { get; }
     }
 }

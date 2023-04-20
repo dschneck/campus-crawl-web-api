@@ -10,10 +10,12 @@ namespace campus_crawl_web_api
     public class RsoController
     {
         private ILogger<RsoController> logger;
+        private ICampusCrawlUnitOfWork unitOfWork;
 
-        public RsoController(ILogger<RsoController> logger)
+        public RsoController(ILogger<RsoController> logger, ICampusCrawlUnitOfWork unitOfWork)
         {
             this.logger = logger;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet]
@@ -22,7 +24,20 @@ namespace campus_crawl_web_api
         [HttpPost("create")]
         public async Task<Response<RSO>> CreateRso([FromBody] RSO rso)
         {
-            return new Response<RSO>();
+            this.logger.LogInformation("trying to create an RSO");
+            var response = new Response<RSO>() {
+                hasError = false,
+                error = ""
+            };
+
+            var data = this.unitOfWork.RSOs.CreateRSO(rso);
+
+            if (response.data == null) {
+                response.hasError = true;
+                response.error = "invalid rso";
+            }
+
+            return response;
         }
 
         [HttpPost("join")]
