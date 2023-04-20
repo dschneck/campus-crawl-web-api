@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using DataAccess.Intefaces;
+using DataAccess.Entities;
+using DataAccess.Models;
 
 namespace campus_crawl_web_api
 {
@@ -16,8 +19,11 @@ namespace campus_crawl_web_api
         [HttpGet]
         public string ListRsos() => Guid.NewGuid().ToString();
 
-        [HttpGet("create")]
-        public string CreateRso() => Guid.NewGuid().ToString();
+        [HttpPost("create")]
+        public async Task<Response<RSO>> CreateRso([FromBody] RSO rso)
+        {
+            return new Response<RSO>();
+        }
 
         [HttpPost("join")]
         public string JoinRso() => Guid.NewGuid().ToString();

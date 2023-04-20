@@ -4,8 +4,8 @@ CREATE TABLE Event (
     Name STRING(100) NOT NULL,
     Description STRING(MAX) NOT NULL,
     Category STRING(20) NOT NULL,
-    StartTime DATETIME NOT NULL,
-    EndTime DATETIME NOT NULL,
+    StartTime TIMESTAMP NOT NULL,
+    EndTime TIMESTAMP NOT NULL,
     LocationId STRING(36)  NOT NULL,
     FOREIGN KEY(LocationId) REFERENCES Location(Id),
     FOREIGN KEY(AdminId) REFERENCES Admin(Id)

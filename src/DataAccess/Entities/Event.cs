@@ -5,9 +5,13 @@ namespace DataAccess.Entities {
     public class Event {
         public string Id { get; set;}
 
+        [ForeignKey("Admin")]
         public string AdminId { get; set;}
+        public Admin Admin { get; set;}
 
+        [ForeignKey("Location")]
         public string LocationId { get; set;}
+        public Location Location { get; set;}
 
         public string Name { get; set; }
 
