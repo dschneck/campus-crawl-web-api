@@ -24,6 +24,13 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
+
+    options.AddPolicy("Other Local App", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();
