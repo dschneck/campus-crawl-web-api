@@ -6,6 +6,7 @@ curl -X 'POST' \
   -d '{
   "email": "david@email.com",
   "password": "123"
-}'
+}' \
+| jq
 
 echo ""

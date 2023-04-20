@@ -10,6 +10,7 @@ curl -X 'POST' \
   "address": "string",
   "description": "string",
   "numberOfStudents": 0
-}'
+}' \
+| jq
 
 echo ""

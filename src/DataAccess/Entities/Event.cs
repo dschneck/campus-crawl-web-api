@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DataAccess.Entities {
     [Table("Event")]
@@ -7,10 +8,12 @@ namespace DataAccess.Entities {
 
         [ForeignKey("Admin")]
         public string AdminId { get; set;}
+        [JsonIgnore]
         public Admin Admin { get; set;}
 
         [ForeignKey("Location")]
         public string LocationId { get; set;}
+        [JsonIgnore]
         public Location Location { get; set;}
 
         public string Name { get; set; }

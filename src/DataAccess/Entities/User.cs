@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DataAccess.Entities
 {
@@ -17,6 +18,7 @@ namespace DataAccess.Entities
 
         [ForeignKey("University")]
         public string UniversityId { get; set; }
+        [JsonIgnore]
         public University University { get; set; }
     }
 }
