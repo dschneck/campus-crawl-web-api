@@ -1,5 +1,6 @@
 CREATE TABLE Location (
     Id STRING(36) NOT NULL,
+    Name STRING(50) NOT NULL,
     Address STRING(MAX) NOT NULL,
     Latitude STRING(30) NOT NULL,
     Longitude STRING(30) NOT NULL
