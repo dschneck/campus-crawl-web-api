@@ -11,9 +11,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy("Deployed App", builder =>
     {
         builder.WithOrigins("https://campus-crawl-client-32wswsezka-uc.a.run.app")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+
+    options.AddPolicy("Local App", builder =>
+    {
+        builder.WithOrigins("https://localhost:3000")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
