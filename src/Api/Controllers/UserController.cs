@@ -52,7 +52,8 @@ namespace campus_crawl_web_api.Controllers {
                 Id = user.Id,
                 UniversityId = user.UniversityId,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                Email = user.Email
             };
 
             response.data =  await this.unitOfWork.Users.CreateUser(entity);

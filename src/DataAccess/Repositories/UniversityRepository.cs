@@ -23,5 +23,11 @@ namespace DataAccess.Repositories
             var unis = await this.dbSet.ToListAsync();
             return unis;
         }
+
+        public async Task<University> GetUniversityById(string id)
+        {
+            var uni =  this.dbSet.FromSqlRaw($"SELECT * FROM University WHERE '{id}'");
+            return await uni.FirstOrDefaultAsync();
+        }
     }
 }

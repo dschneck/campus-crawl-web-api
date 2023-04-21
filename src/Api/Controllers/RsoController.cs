@@ -19,10 +19,10 @@ namespace campus_crawl_web_api
         }
 
         [HttpGet]
-        public string ListRsos() => Guid.NewGuid().ToString();
+        public string GetRsos() => Guid.NewGuid().ToString();
 
         [HttpPost("create")]
-        public async Task<Response<RSO>> CreateRso([FromBody] RSO rso)
+        public async Task<Response<RSO>> CreateRso([FromBody] RsoModel rso)
         {
             this.logger.LogInformation("trying to create an RSO");
             var response = new Response<RSO>() {
@@ -30,7 +30,16 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            var data = this.unitOfWork.RSOs.CreateRSO(rso);
+            var entity = new RSO() {
+                Name = rso.Name,
+                Description = rso.Description,
+                Status = rso.Status,
+                Id = rso.Id,
+                University = await this.unitOfWork.Universities.GetUniversityById(rso.UniversityId),
+                UniversityId = rso.UniversityId
+            };
+
+            var data = this.unitOfWork.RSOs.CreateRSO(entity);
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == null) {
