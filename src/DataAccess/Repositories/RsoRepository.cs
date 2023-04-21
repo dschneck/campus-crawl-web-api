@@ -41,7 +41,7 @@ namespace DataAccess.Repositories
             return true;
         }
 
-        public async Task<IEnumerable<RSO>> GetRsos()
+        public async Task<IEnumerable<RSO>> GetRsosByUniversity(string universityId)
         {
             var rsos  = await this.dbSet.ToListAsync();
             return rsos;

@@ -1,0 +1,4 @@
+INSERT INTO RSO (Id, UniversityId, Status, Description, Name) VALUES ('bd8f9c4d-4a50-4a10-8b08-81d69b5e141c', 'd7566c1e-fb68-4691-bd60-91327ebc23da', 'inactive', 'This is a club for students interested in gaming.', 'Gaming Club');
+INSERT INTO RSO (Id, UniversityId, Status, Description, Name) VALUES ('40c216df-3b3e-4962-bb1c-fa901fc413d1', '22df0a9c-c173-4682-a2a1-206a56e2588f', 'inactive', 'This is a club for students interested in robotics.', 'Robotics Club');
+INSERT INTO RSO (Id, UniversityId, Status, Description, Name) VALUES ('bbd6c206-6b53-4a37-9b08-6f49106ceab7', '0a1f90d4-bd46-4c4f-b41f-4c6d4fc02dd9', 'inactive', 'This is a club for students interested in marketing.', 'Marketing Club');
+INSERT INTO RSO (Id, UniversityId, Status, Description, Name) VALUES ('c6d29b32-c0b6-41ec-9d9c-f4a0c4e6d05b', '0a1f90d4-bd46-4c4f-b41f-4c6d4fc02dd9', 'inactive', 'This is a club for students interested in fashion.', 'Fashion Club');

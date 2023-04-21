@@ -18,8 +18,8 @@ namespace campus_crawl_web_api
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
-        public async Task<Response<IEnumerable<RSO>>> GetRsos()
+        [HttpPost]
+        public async Task<Response<IEnumerable<RSO>>> GetRsos([FromBody] string universityId)
         {
 
             var response = new Response<IEnumerable<RSO>>()
@@ -28,7 +28,7 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            response.data = await this.unitOfWork.RSOs.GetRsos();
+            response.data = await this.unitOfWork.RSOs.GetRsosByUniversity(universityId);
 
             if (response.data == null)
             {
