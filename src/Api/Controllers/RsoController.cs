@@ -39,8 +39,7 @@ namespace campus_crawl_web_api
                 UniversityId = rso.UniversityId
             };
 
-            var data = this.unitOfWork.RSOs.CreateRSO(entity);
-            this.logger.LogInformation("IM HERE NOWWWWW");
+            response.data = await this.unitOfWork.RSOs.CreateRSO(entity);
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == null) {
@@ -59,7 +58,31 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            response.data = true;
+            response.data = await this.unitOfWork.RSOs.JoinRso(userId, rsoId);
+
+            if (response.data == false) {
+                response.hasError = true;
+                response.error = "issue";
+            }
+
+            return response;
+        }
+
+        [HttpPost("leave/{rsoId}")]
+        public async Task<Response<bool>> LeaveRso([FromBody] string userId, [FromRoute] string rsoId)
+        {
+            var response = new Response<bool>() {
+                hasError = false,
+                error = ""
+            };
+
+            response.data = await this.unitOfWork.RSOs.LeaveRso(userId, rsoId);
+
+            if (response.data == false) {
+                response.hasError = true;
+                response.error = "issue";
+            }
+
             return response;
         }
 
