@@ -11,6 +11,7 @@ namespace DataAccess.Repositories
         public RsoRepository(CampusCrawlDbContext dbContext)
         {
             this.dbSet = dbContext.Set<RSO>();
+            this.memberdbSet = dbContext.Set<Member>();
         }
 
         public async Task<RSO> CreateRSO(RSO rso)
