@@ -40,6 +40,7 @@ namespace campus_crawl_web_api
             };
 
             var data = this.unitOfWork.RSOs.CreateRSO(entity);
+            this.logger.LogInformation("IM HERE NOWWWWW");
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == null) {
