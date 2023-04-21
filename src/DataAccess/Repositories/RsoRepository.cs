@@ -39,5 +39,14 @@ namespace DataAccess.Repositories
             });
 
             return true;
-        }}
+        }
+
+        public async Task<IEnumerable<RSO>> GetRsos()
+        {
+            var rsos  = await this.dbSet.ToListAsync();
+            return rsos;
+        }
+    }
+
+
 }

@@ -19,7 +19,25 @@ namespace campus_crawl_web_api
         }
 
         [HttpGet]
-        public string GetRsos() => Guid.NewGuid().ToString();
+        public async Task<Response<IEnumerable<RSO>>> GetRsos()
+        {
+
+            var response = new Response<IEnumerable<RSO>>()
+            {
+                hasError = false,
+                error = ""
+            };
+
+            response.data = await this.unitOfWork.RSOs.GetRsos();
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get rsos";
+            }
+
+            return response;
+        }
 
         [HttpPost("create")]
         public async Task<Response<RSO>> CreateRso([FromBody] RsoModel rso)
