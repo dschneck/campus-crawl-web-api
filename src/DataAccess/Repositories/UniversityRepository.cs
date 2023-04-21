@@ -26,7 +26,7 @@ namespace DataAccess.Repositories
 
         public async Task<University> GetUniversityById(string id)
         {
-            var uni =  this.dbSet.FromSqlRaw($"SELECT * FROM University WHERE '{id}'");
+            var uni =  this.dbSet.FromSqlRaw($"SELECT * FROM University WHERE Id='{id}'");
             return await uni.FirstOrDefaultAsync();
         }
     }
