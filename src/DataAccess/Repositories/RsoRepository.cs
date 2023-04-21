@@ -34,7 +34,6 @@ namespace DataAccess.Repositories
             await this.memberdbSet.AddAsync(new Member() {
                 UserId = userId,
                 RSOId = rsoId,
-                Id = Guid.NewGuid().ToString(),
                 User = new User(){},
                 RSO = new RSO(){}
             });
