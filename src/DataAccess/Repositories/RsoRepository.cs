@@ -43,7 +43,7 @@ namespace DataAccess.Repositories
 
         public async Task<IEnumerable<RSO>> GetRsosByUniversity(string universityId)
         {
-            var rsos  = await this.dbSet.ToListAsync();
+            var rsos  = await this.dbSet.Where(x => x.UniversityId == universityId).ToListAsync();
             return rsos;
         }
     }
