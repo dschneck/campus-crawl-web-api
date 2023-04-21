@@ -17,8 +17,7 @@ namespace DataAccess.Repositories
             rso.Id = Guid.NewGuid().ToString();
 
             await this.dbSet.AddAsync(rso);
-            var entity = this.dbSet.FromSqlRaw($"SELECT * FROM dbo.RSO WHERE Id = '{rso.Id}'");
-            return await entity.FirstOrDefaultAsync();
+            return await this.dbSet.FindAsync(rso.Id);
         }
     }
 }
