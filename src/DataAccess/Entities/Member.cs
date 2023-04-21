@@ -4,8 +4,6 @@ using System.Text.Json.Serialization;
 namespace DataAccess.Entities {
     [Table("Member")]
     public class Member {
-        public string Id { get; set;}
-
         [ForeignKey("User")]
         public string UserId { get; set; }
         [JsonIgnore]
