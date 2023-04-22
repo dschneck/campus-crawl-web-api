@@ -18,7 +18,7 @@ namespace campus_crawl_web_api
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("/{userId}")]
         public async Task<Response<IEnumerable<RSO>>> GetRsosForUserId([FromHeader] string userId)
         {
             var response = new Response<IEnumerable<RSO>>()
