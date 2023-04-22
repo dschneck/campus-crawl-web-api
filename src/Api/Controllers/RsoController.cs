@@ -83,6 +83,8 @@ namespace campus_crawl_web_api
                 User = await this.unitOfWork.Users.GetUserById(userId),
                 RSO = await this.unitOfWork.RSOs.GetRsoById(rsoId)
             };
+            this.logger.LogCritical(entity.User.Id);
+            this.logger.LogCritical(entity.RSO.Id);
 
             response.data = await this.unitOfWork.Members.JoinRso(entity);
             await this.unitOfWork.SaveAllAsync();
