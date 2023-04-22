@@ -19,7 +19,7 @@ namespace campus_crawl_web_api
         }
 
         [HttpGet("{userId}")]
-        public async Task<Response<IEnumerable<RSO>>> GetRsosForUserId([FromHeader] string userId)
+        public async Task<Response<IEnumerable<RSO>>> GetRsosForUserId([FromRoute] string userId)
         {
             var response = new Response<IEnumerable<RSO>>()
             {
