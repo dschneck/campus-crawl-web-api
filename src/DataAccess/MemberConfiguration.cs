@@ -8,7 +8,7 @@ namespace DataAccess
     {
         public void Configure(EntityTypeBuilder<Member> builder)
         {
-            builder.HasNoKey();
+            builder.HasKey(x => new { x.RSOId, x.UserId });
         }
     }
 }

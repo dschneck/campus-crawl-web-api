@@ -5,13 +5,13 @@ using System.Text.Json.Serialization;
 namespace DataAccess.Entities {
     [Table("Member")]
     public class Member {
-        [Key]
+        public string Id { get; set; }
+
         [ForeignKey("User")]
         public string UserId { get; set; }
         [JsonIgnore]
         public User User { get; set; }
 
-        [Key]
         [ForeignKey("RSO")]
         public string RSOId { get; set; }
         [JsonIgnore]
