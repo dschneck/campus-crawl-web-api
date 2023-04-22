@@ -71,7 +71,10 @@ namespace campus_crawl_web_api.Controllers
             response.data = new List<Event>();
 
             foreach (var member in members) {
-                response.data.Concat(await this.unitOfWork.RsoEvents.GetEventsByRsoId(member.RsoId));
+                var rsoEvent = await this.unitOfWork.RsoEvents.GetEventsByRsoId(member.RsoId);
+                foreach (var @event in rsoEvent) {
+                    response.data.Add(@event);
+                }
             }
 
             if (response.data == null)
