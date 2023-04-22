@@ -34,7 +34,7 @@ namespace campus_crawl_web_api
             foreach (var member in memberEntries) {
                 var tmp = await this.unitOfWork.RSOs.GetRsoById(member.RsoId);
                 this.logger.LogWarning($"rsoId got : {tmp?.Name}");
-                response.data.Add(tmp);
+                response.data?.Add(tmp);
                 this.logger.LogWarning($"now data has this many items: {response.data.Count()}");
             }
 
@@ -67,8 +67,8 @@ namespace campus_crawl_web_api
             return response;
         }
 
-        [HttpPost("create")]
-        public async Task<Response<RSO>> CreateRso([FromBody] RsoModel rso)
+        [HttpPost("create/{userId}")]
+        public async Task<Response<RSO>> CreateRso([FromBody] RsoModel rso, [FromRoute] string userId)
         {
             this.logger.LogInformation("trying to create an RSO");
             var response = new Response<RSO>() {
@@ -80,12 +80,24 @@ namespace campus_crawl_web_api
                 Name = rso.Name,
                 Description = rso.Description,
                 Status = rso.Status,
-                Id = rso.Id,
+                Id = Guid.NewGuid().ToString(),
                 University = await this.unitOfWork.Universities.GetUniversityById(rso.UniversityId),
                 UniversityId = rso.UniversityId
             };
 
+
             response.data = await this.unitOfWork.RSOs.CreateRSO(entity);
+            var member = new Member() {
+                Id = Guid.NewGuid().ToString(),
+                   UserId = userId,
+                   RsoId = response.data.Id,
+                   User = await this.unitOfWork.Users.GetUserById(userId),
+                   RSO = response.data
+            };
+
+            await this.unitOfWork.Members.JoinRso(member);
+            await this.unitOfWork.Admins.CreateAdmin(new Admin() { Id = Guid.NewGuid().ToString(), Member = member });
+
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == null) {

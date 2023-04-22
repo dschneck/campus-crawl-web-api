@@ -12,10 +12,9 @@ namespace DataAccess.Repositories
             this.dbSet = dbContext.Set<Admin>();
         }
 
-        public async Task<string> CreateRSO(Admin admin)
+        public async Task CreateAdmin(Admin admin)
         {
             await this.dbSet.AddAsync(admin);
-            return "ast";
         }
     }
 }

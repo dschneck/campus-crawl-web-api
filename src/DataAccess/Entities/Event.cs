@@ -6,10 +6,10 @@ namespace DataAccess.Entities {
     public class Event {
         public string Id { get; set;}
 
-        [ForeignKey("Admin")]
-        public string AdminId { get; set;}
+        [ForeignKey("RSO")]
+        public string RsoId { get; set;}
         [JsonIgnore]
-        public Admin Admin { get; set;}
+        public RSO RSO { get; set;}
 
         [ForeignKey("Location")]
         public string LocationId { get; set;}

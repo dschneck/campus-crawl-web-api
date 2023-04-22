@@ -6,14 +6,9 @@ namespace DataAccess.Entities {
     public class Admin {
         public string Id { get; set;}
 
-        [ForeignKey("User")]
-        public string UserId { get; set;}
+        [ForeignKey("Member")]
+        public string MemberId { get; set;}
         [JsonIgnore]
-        public User User { get; set;}
-
-        [ForeignKey("RSO")]
-        public string RSOId { get; set;}
-        [JsonIgnore]
-        public RSO RSO { get; set;}
+        public Member Member { get; set;}
     }
 }

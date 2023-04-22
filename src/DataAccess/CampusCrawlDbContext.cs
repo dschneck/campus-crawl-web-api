@@ -19,6 +19,8 @@ namespace DataAccess
 
         public DbSet<Member> Member { get; set; }
 
+        public DbSet<Admin> Admin { get; set; }
+
         public DbSet<PublicEvent> PublicEvent { get; set; }
 
         public DbSet<PrivateEvent> PrivateEvent { get; set; }
