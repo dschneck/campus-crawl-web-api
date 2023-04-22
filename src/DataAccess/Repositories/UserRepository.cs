@@ -19,6 +19,11 @@ namespace DataAccess.Repositories
             await this.dbSet.AddAsync(user);
             return user;
         }
+        public async Task<User> GetUserById(string userId)
+        {
+            var user = await this.dbSet.FirstOrDefaultAsync(x => x.Id.Equals(userId));
+            return user;
+        }
 
         public async Task<User> GetUserFromCredentials(UserCredentials userCred)
         {

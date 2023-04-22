@@ -11,7 +11,6 @@ namespace DataAccess.Repositories
         public RsoRepository(CampusCrawlDbContext dbContext)
         {
             this.dbSet = dbContext.Set<RSO>();
-            this.memberdbSet = dbContext.Set<Member>();
         }
 
         public async Task<RSO> CreateRSO(RSO rso)
@@ -22,30 +21,16 @@ namespace DataAccess.Repositories
             return await this.dbSet.FindAsync(rso.Id);
         }
 
-        public async Task<bool> LeaveRso(string userId, string rsoId)
-        {
-            var entity = this.memberdbSet.Where(x => x.UserId == userId && x.RSOId == rsoId).First();
-            this.memberdbSet.Remove(entity);
-            return true;
-        }
-
-        public async Task<bool> JoinRso(string userId, string rsoId)
-        {
-            await this.memberdbSet.AddAsync(new Member() {
-                Id = Guid.NewGuid().ToString(),
-                UserId = userId,
-                RSOId = rsoId,
-                User = new User(){},
-                RSO = new RSO(){}
-            });
-
-            return true;
-        }
-
-        public async Task<IEnumerable<RSO>> GetRsosByUniversity(string universityId)
+        public async Task<IEnumerable<RSO>> GetRsosFromUniversityId(string universityId)
         {
             var rsos  = await this.dbSet.Where(x => x.UniversityId == universityId).ToListAsync();
             return rsos;
+        }
+
+        public async Task<RSO> GetRsoById(string rsoId)
+        {
+            var user = await this.dbSet.FirstOrDefaultAsync(x => x.Id.Equals(rsoId));
+            return user;
         }
     }
 

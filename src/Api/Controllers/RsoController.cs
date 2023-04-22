@@ -28,7 +28,7 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            response.data = await this.unitOfWork.RSOs.GetRsosByUniversity(universityId);
+            response.data = await this.unitOfWork.RSOs.GetRsosFromUniversityId(universityId);
 
             if (response.data == null)
             {
@@ -76,7 +76,15 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            response.data = await this.unitOfWork.RSOs.JoinRso(userId, rsoId);
+            var entity = new Member() {
+                Id = Guid.NewGuid().ToString(),
+                UserId = userId,
+                RSOId = rsoId,
+                User = await this.unitOfWork.Users.GetUserById(userId),
+                RSO = await this.unitOfWork.RSOs.GetRsoById(rsoId)
+            };
+
+            response.data = await this.unitOfWork.Members.JoinRso(entity);
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == false) {
@@ -95,7 +103,7 @@ namespace campus_crawl_web_api
                 error = ""
             };
 
-            response.data = await this.unitOfWork.RSOs.LeaveRso(userId, rsoId);
+            response.data = await this.unitOfWork.Members.LeaveRso(userId, rsoId);
             await this.unitOfWork.SaveAllAsync();
 
             if (response.data == false) {

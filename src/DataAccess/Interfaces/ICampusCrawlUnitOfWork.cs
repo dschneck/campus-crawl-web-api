@@ -10,5 +10,6 @@ namespace DataAccess.Intefaces
         UserRepository Users { get; }
         RsoRepository RSOs { get; }
         AdminRepository Admins { get; }
+        MemberRepository Members { get; }
     }
 }

@@ -11,6 +11,7 @@ namespace DataAccess
         private UserRepository userRepo;
         private AdminRepository adminRepo;
         private RsoRepository rsoRepo;
+        private MemberRepository memberRepo;
 
         public UniversityRepository Universities
         {
@@ -42,6 +43,14 @@ namespace DataAccess
             get
             {
                 return this.rsoRepo ??= new RsoRepository(this.dbContext);
+            }
+        }
+
+        public MemberRepository Members
+        {
+            get
+            {
+                return this.memberRepo ??= new MemberRepository(this.dbContext);
             }
         }
 
