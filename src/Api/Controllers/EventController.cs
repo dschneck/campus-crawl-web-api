@@ -59,9 +59,9 @@ namespace campus_crawl_web_api.Controllers
         }
 
         [HttpGet("rso/{userId}")]
-        public async Task<Response<IEnumerable<Event>>> GetRsoEvents([FromRoute] string userId)
+        public async Task<Response<ICollection<Event>>> GetRsoEvents([FromRoute] string userId)
         {
-            var response = new Response<IEnumerable<Event>>()
+            var response = new Response<ICollection<Event>>()
             {
                 hasError = false,
                 error = ""

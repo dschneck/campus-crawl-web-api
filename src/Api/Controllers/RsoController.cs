@@ -48,15 +48,15 @@ namespace campus_crawl_web_api
         }
 
         [HttpPost]
-        public async Task<Response<ICollection<RSO>>> GetRsos([FromBody] string universityId)
+        public async Task<Response<IEnumerable<RSO>>> GetRsos([FromBody] string universityId)
         {
-            var response = new Response<ICollection<RSO>>()
+            var response = new Response<IEnumerable<RSO>>()
             {
                 hasError = false,
                 error = ""
             };
 
-            response.data = (ICollection<RSO>) await this.unitOfWork.RSOs.GetRsosFromUniversityId(universityId);
+            response.data = await this.unitOfWork.RSOs.GetRsosFromUniversityId(universityId);
 
             if (response.data == null)
             {
