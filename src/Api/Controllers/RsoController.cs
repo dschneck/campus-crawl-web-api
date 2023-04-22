@@ -34,7 +34,8 @@ namespace campus_crawl_web_api
             foreach (var member in memberEntries) {
                 var tmp = await this.unitOfWork.RSOs.GetRsoById(member.RsoId);
                 this.logger.LogWarning($"rsoId got : {tmp?.Name}");
-                response.data.Append(await this.unitOfWork.RSOs.GetRsoById(member.RsoId));
+                response.data.Append(tmp);
+                this.logger.LogWarning($"now data has this many items: {response.data.Count()}");
             }
 
             if (response.data == null)
