@@ -19,9 +19,9 @@ namespace campus_crawl_web_api
         }
 
         [HttpGet("{userId}")]
-        public async Task<Response<IEnumerable<RSO>>> GetRsosForUserId([FromRoute] string userId)
+        public async Task<Response<ICollection<RSO>>> GetRsosForUserId([FromRoute] string userId)
         {
-            var response = new Response<IEnumerable<RSO>>()
+            var response = new Response<ICollection<RSO>>()
             {
                 hasError = false,
                 error = ""
@@ -34,7 +34,7 @@ namespace campus_crawl_web_api
             foreach (var member in memberEntries) {
                 var tmp = await this.unitOfWork.RSOs.GetRsoById(member.RsoId);
                 this.logger.LogWarning($"rsoId got : {tmp?.Name}");
-                response.data.Append(tmp);
+                response.data.Add(tmp);
                 this.logger.LogWarning($"now data has this many items: {response.data.Count()}");
             }
 
@@ -48,15 +48,15 @@ namespace campus_crawl_web_api
         }
 
         [HttpPost]
-        public async Task<Response<IEnumerable<RSO>>> GetRsos([FromBody] string universityId)
+        public async Task<Response<ICollection<RSO>>> GetRsos([FromBody] string universityId)
         {
-            var response = new Response<IEnumerable<RSO>>()
+            var response = new Response<ICollection<RSO>>()
             {
                 hasError = false,
                 error = ""
             };
 
-            response.data = await this.unitOfWork.RSOs.GetRsosFromUniversityId(universityId);
+            response.data = (ICollection<RSO>) await this.unitOfWork.RSOs.GetRsosFromUniversityId(universityId);
 
             if (response.data == null)
             {
