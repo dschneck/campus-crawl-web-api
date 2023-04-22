@@ -32,6 +32,7 @@ namespace DataAccess.Repositories
         public async Task<bool> JoinRso(string userId, string rsoId)
         {
             await this.memberdbSet.AddAsync(new Member() {
+                Id = Guid.NewGuid().ToString(),
                 UserId = userId,
                 RSOId = rsoId,
                 User = new User(){},

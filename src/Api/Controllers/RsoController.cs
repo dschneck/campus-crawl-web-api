@@ -77,6 +77,7 @@ namespace campus_crawl_web_api
             };
 
             response.data = await this.unitOfWork.RSOs.JoinRso(userId, rsoId);
+            await this.unitOfWork.SaveAllAsync();
 
             if (response.data == false) {
                 response.hasError = true;
@@ -95,6 +96,7 @@ namespace campus_crawl_web_api
             };
 
             response.data = await this.unitOfWork.RSOs.LeaveRso(userId, rsoId);
+            await this.unitOfWork.SaveAllAsync();
 
             if (response.data == false) {
                 response.hasError = true;
