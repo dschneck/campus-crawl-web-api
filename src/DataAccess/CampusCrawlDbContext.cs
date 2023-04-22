@@ -19,6 +19,12 @@ namespace DataAccess
 
         public DbSet<Member> Member { get; set; }
 
+        public DbSet<PublicEvent> PublicEvent { get; set; }
+
+        public DbSet<PrivateEvent> PrivateEvent { get; set; }
+
+        public DbSet<RsoEvent> RsoEvent { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
