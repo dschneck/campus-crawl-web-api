@@ -18,10 +18,34 @@ namespace campus_crawl_web_api
             this.unitOfWork = unitOfWork;
         }
 
+        [HttpGet("{userId}")]
+        public async Task<Response<IEnumerable<RSO>>> GetRsosForUserId([FromHeader] string userId)
+        {
+            var response = new Response<IEnumerable<RSO>>()
+            {
+                hasError = false,
+                error = ""
+            };
+
+            var memberEntries = await this.unitOfWork.Members.GetAllByUserId(userId);
+            response.data = new List<RSO>();
+
+            foreach (var member in memberEntries) {
+                response.data.Append(await this.unitOfWork.RSOs.GetRsoById(member.RSOId));
+            }
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get rsos";
+            }
+
+            return response;
+        }
+
         [HttpPost]
         public async Task<Response<IEnumerable<RSO>>> GetRsos([FromBody] string universityId)
         {
-
             var response = new Response<IEnumerable<RSO>>()
             {
                 hasError = false,

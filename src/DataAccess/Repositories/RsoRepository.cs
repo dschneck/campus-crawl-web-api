@@ -6,7 +6,6 @@ namespace DataAccess.Repositories
     public class RsoRepository
     {
         private readonly DbSet<RSO> dbSet;
-        private readonly DbSet<Member> memberdbSet;
 
         public RsoRepository(CampusCrawlDbContext dbContext)
         {
@@ -29,10 +28,9 @@ namespace DataAccess.Repositories
 
         public async Task<RSO> GetRsoById(string rsoId)
         {
-            var user = await this.dbSet.FirstOrDefaultAsync(x => x.Id.Equals(rsoId));
-            return user;
+            var rsos = await this.dbSet.FirstOrDefaultAsync(x => x.Id.Equals(rsoId));
+            return rsos;
         }
     }
-
 
 }

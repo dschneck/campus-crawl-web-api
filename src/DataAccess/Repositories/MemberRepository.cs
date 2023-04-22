@@ -26,5 +26,11 @@ namespace DataAccess.Repositories
             this.dbSet.Remove(entity);
             return true;
         }
+
+        public async Task<IEnumerable<Member>>GetAllByUserId(string userId)
+        {
+            var members = await this.dbSet.Where(x => x.UserId == userId).ToListAsync();
+            return members;
+        }
     }
 }

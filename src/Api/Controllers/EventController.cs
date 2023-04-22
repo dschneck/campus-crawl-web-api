@@ -16,7 +16,7 @@ namespace campus_crawl_web_api.Controllers
         [HttpPost("search")]
         public string SearchEvents() => Guid.NewGuid().ToString();
 
-        [HttpGet("{eventId}/comments/list")]
+        [HttpGet("{userId}/comments/list")]
         public string ListEvents() => Guid.NewGuid().ToString();
 
         [HttpPost("{eventId}/comments/comment")]
