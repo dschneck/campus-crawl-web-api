@@ -28,7 +28,7 @@ namespace DataAccess.Repositories
 
         public async Task<RSO> GetRsoById(string rsoId)
         {
-            var rsos = await this.dbSet.FirstOrDefaultAsync(x => x.Id.Equals(rsoId));
+            var rsos = await this.dbSet.FindAsync(rsoId);
             return rsos;
         }
     }

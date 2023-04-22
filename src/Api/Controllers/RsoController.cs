@@ -28,6 +28,7 @@ namespace campus_crawl_web_api
             };
 
             var memberEntries = await this.unitOfWork.Members.GetAllByUserId(userId);
+            this.logger.LogWarning($"got the following number of members {memberEntries.Count()}");
             response.data = new List<RSO>();
 
             foreach (var member in memberEntries) {
