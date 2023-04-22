@@ -12,6 +12,9 @@ namespace DataAccess
         private AdminRepository adminRepo;
         private RsoRepository rsoRepo;
         private MemberRepository memberRepo;
+        private RsoEventRepository rsoEventRepo;
+        private PrivateEventRepository privateEventRepo;
+        private PublicEventRepository publicEventRepo;
 
         public UniversityRepository Universities
         {
@@ -51,6 +54,31 @@ namespace DataAccess
             get
             {
                 return this.memberRepo ??= new MemberRepository(this.dbContext);
+            }
+        }
+
+
+        public RsoEventRepository RsoEvents
+        {
+            get
+            {
+                return this.rsoEventRepo ??= new RsoEventRepository(this.dbContext);
+            }
+        }
+
+        public PublicEventRepository PublicEvents
+        {
+            get
+            {
+                return this.publicEventRepo ??= new PublicEventRepository(this.dbContext);
+            }
+        }
+
+        public PrivateEventRepository PrivateEvents
+        {
+            get
+            {
+                return this.privateEventRepo ??= new PrivateEventRepository(this.dbContext);
             }
         }
 

@@ -11,5 +11,8 @@ namespace DataAccess.Intefaces
         RsoRepository RSOs { get; }
         AdminRepository Admins { get; }
         MemberRepository Members { get; }
+        PrivateEventRepository PrivateEvents { get; }
+        PublicEventRepository PublicEvents { get; }
+        RsoEventRepository RsoEvents { get; }
     }
 }

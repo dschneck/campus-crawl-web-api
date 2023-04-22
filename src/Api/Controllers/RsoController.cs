@@ -31,7 +31,7 @@ namespace campus_crawl_web_api
             response.data = new List<RSO>();
 
             foreach (var member in memberEntries) {
-                response.data.Append(await this.unitOfWork.RSOs.GetRsoById(member.RSOId));
+                response.data.Append(await this.unitOfWork.RSOs.GetRsoById(member.RsoId));
             }
 
             if (response.data == null)
@@ -103,7 +103,7 @@ namespace campus_crawl_web_api
             var entity = new Member() {
                 Id = Guid.NewGuid().ToString(),
                 UserId = userId,
-                RSOId = rsoId,
+                RsoId = rsoId,
                 User = await this.unitOfWork.Users.GetUserById(userId),
                 RSO = await this.unitOfWork.RSOs.GetRsoById(rsoId)
             };

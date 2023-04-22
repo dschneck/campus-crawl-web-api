@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using DataAccess.Intefaces;
+using DataAccess.Entities;
+using DataAccess.Models;
 
 namespace campus_crawl_web_api.Controllers
 {
@@ -7,16 +10,80 @@ namespace campus_crawl_web_api.Controllers
     public class EventController : ControllerBase
     {
         private ILogger<EventController> logger;
+        private ICampusCrawlUnitOfWork unitOfWork;
 
-        public EventController(ILogger<EventController> logger)
+        public EventController(ILogger<EventController> logger, ICampusCrawlUnitOfWork unitOfWork)
         {
             this.logger = logger;
+            this.unitOfWork = unitOfWork;
         }
 
-        [HttpPost("search")]
-        public string SearchEvents() => Guid.NewGuid().ToString();
+        [HttpGet("public/{userId}")]
+        public async Task<Response<IEnumerable<Event>>> GetPublicEvents()
+        {
+            var response = new Response<IEnumerable<Event>>()
+            {
+                hasError = false,
+                error = ""
+            };
 
-        [HttpGet("{userId}/comments/list")]
+            response.data = await this.unitOfWork.PublicEvents.GetEvents();
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get public events";
+            }
+
+            return response;
+        }
+
+        [HttpGet("private/{universityId}")]
+        public async Task<Response<IEnumerable<Event>>> GetPrivateEvents([FromRoute] string universityId)
+        {
+            var response = new Response<IEnumerable<Event>>()
+            {
+                hasError = false,
+                error = ""
+            };
+
+            response.data = await this.unitOfWork.PrivateEvents.GetEventsByUniversityId(universityId);
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get private events";
+            }
+
+            return response;
+        }
+
+        [HttpGet("rso/{userId}")]
+        public async Task<Response<IEnumerable<Event>>> GetRsoEvents([FromRoute] string userId)
+        {
+            var response = new Response<IEnumerable<Event>>()
+            {
+                hasError = false,
+                error = ""
+            };
+
+            var members = await this.unitOfWork.Members.GetAllByUserId(userId);
+            response.data = new List<Event>();
+
+            foreach (var member in members) {
+                response.data.Concat(await this.unitOfWork.RsoEvents.GetEventsByRsoId(member.RsoId));
+            }
+
+            if (response.data == null)
+            {
+                response.hasError = true;
+                response.error = "couldnt get rso events";
+            }
+
+            return response;
+        }
+
+        [HttpGet("{eventId}/comments/list")]
         public string ListEvents() => Guid.NewGuid().ToString();
 
         [HttpPost("{eventId}/comments/comment")]

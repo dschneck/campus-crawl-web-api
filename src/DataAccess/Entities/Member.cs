@@ -13,7 +13,7 @@ namespace DataAccess.Entities {
         public User User { get; set; }
 
         [ForeignKey("RSO")]
-        public string RSOId { get; set; }
+        public string RsoId { get; set; }
         [JsonIgnore]
         public RSO RSO { get; set; }
     }

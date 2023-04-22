@@ -2,18 +2,18 @@ using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccess.Entities {
-    [Table("RSOEvent")]
-    public class RSOEvent {
+    [Table("RsoEvent")]
+    public class RsoEvent {
         public string Id { get; set;}
 
         [ForeignKey("RSO")]
-        public string RSOId { get; set; }
+        public string RsoId { get; set; }
         [JsonIgnore]
         public RSO RSO { get; set; }
 
-        [ForeignKey("User")]
-        public string UserId { get; set; }
+        [ForeignKey("Event")]
+        public string EventId { get; set; }
         [JsonIgnore]
-        public User User { get; set; }
+        public Event Event { get; set; }
     }
 }

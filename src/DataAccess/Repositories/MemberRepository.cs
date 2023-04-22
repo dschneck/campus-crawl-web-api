@@ -22,7 +22,7 @@ namespace DataAccess.Repositories
 
         public async Task<bool> LeaveRso(string userId, string rsoId)
         {
-            var entity = this.dbSet.Where(x => x.UserId == userId && x.RSOId == rsoId).First();
+            var entity = this.dbSet.Where(x => x.UserId == userId && x.RsoId == rsoId).First();
             this.dbSet.Remove(entity);
             return true;
         }
