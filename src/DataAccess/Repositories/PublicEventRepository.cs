@@ -14,7 +14,7 @@ namespace DataAccess.Repositories
 
         public async Task<IEnumerable<Event>> GetEvents()
         {
-            var publicEvents = await this.dbSet.ToListAsync();
+            var publicEvents = await this.dbSet.Include(x => x.Event).ToListAsync();
 
 
             var events = new List<Event>();

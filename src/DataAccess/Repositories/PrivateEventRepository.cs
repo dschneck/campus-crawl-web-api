@@ -14,7 +14,7 @@ namespace DataAccess.Repositories
 
         public async Task<IEnumerable<Event>> GetEventsByUniversityId(string universityId)
         {
-            var privateEvents = await this.dbSet.ToListAsync();
+            var privateEvents = await this.dbSet.Include(x => x.Event).ToListAsync();
 
             var events = new List<Event>();
 

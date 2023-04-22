@@ -13,7 +13,7 @@ namespace DataAccess.Repositories
         }
         public async Task<IEnumerable<Event>> GetEventsByRsoId(string rsoId)
         {
-            var rsoEvents = await this.dbSet.Where(x => x.RsoId.Equals(rsoId)).ToListAsync();
+            var rsoEvents = await this.dbSet.Include(x => x.Event).Where(x => x.RsoId.Equals(rsoId)).ToListAsync();
 
             var events = new List<Event>();
 
